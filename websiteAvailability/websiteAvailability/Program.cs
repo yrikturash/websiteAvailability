@@ -10,9 +10,16 @@ namespace websiteAvailability
     {
         static void Main(string[] args)
         {
+
             SimpleWebChecker webChecker = new SimpleWebChecker();
-            webChecker.PingHost("112.152.156.254");
-            Console.ReadKey();
+            Console.WriteLine("Press ESC to stop");
+            do
+            {
+                while (!Console.KeyAvailable)
+                {
+                    webChecker.PingHost("google.com");
+                }
+            } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         }
     }
 }
