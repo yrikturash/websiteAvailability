@@ -12,12 +12,13 @@ namespace websiteAvailability
         {
 
             SimpleWebChecker webChecker = new SimpleWebChecker();
+            var checker = Ioc.Get<IWebChecker>();
             Console.WriteLine("Press ESC to stop");
             do
             {
                 while (!Console.KeyAvailable)
                 {
-                    webChecker.PingHost("google.com");
+                    checker.PingHost("google.com");
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         }
