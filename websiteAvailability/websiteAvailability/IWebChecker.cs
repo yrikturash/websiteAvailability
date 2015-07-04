@@ -31,7 +31,7 @@ namespace websiteAvailability
                 PingReply reply = pinger.Send(nameOrAddress);
                 pingable = reply.Status == IPStatus.Success;
                 var pingTime = pingable ? reply.RoundtripTime : 0;
-                Logger.Log(LogType.TextFile, "'{0}' pingable is {1}, time is {2}", nameOrAddress, pingable, pingTime);
+                Logger.Log(LogType.XML, "'{0}' pingable is {1}, time is {2}", nameOrAddress, pingable, pingTime);
             }
             catch (PingException)
             {
