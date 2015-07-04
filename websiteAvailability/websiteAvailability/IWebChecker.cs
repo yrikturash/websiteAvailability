@@ -22,7 +22,7 @@ namespace websiteAvailability
             set { _logger = value; }
         }
 
-        public bool PingHost(string nameOrAddress)
+        public bool PingHost(string nameOrAddress, LogType logType = LogType.Console)
         {
             bool pingable = false;
             Ping pinger = new Ping();
@@ -31,7 +31,7 @@ namespace websiteAvailability
                 PingReply reply = pinger.Send(nameOrAddress);
                 pingable = reply.Status == IPStatus.Success;
                 var pingTime = pingable ? reply.RoundtripTime : 0;
-                Logger.Log(LogType.XML, "'{0}' pingable is {1}, time is {2}", nameOrAddress, pingable, pingTime);
+                Logger.Log(logType, "'{0}' pingable is {1}, time is {2}", nameOrAddress, pingable, pingTime);
             }
             catch (PingException)
             {
