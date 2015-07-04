@@ -14,7 +14,7 @@ namespace websiteAvailability
 
         static Ioc()
         {
-            Kernel.Bind<IWebChecker>().To<SimpleWebChecker>().InSingletonScope();
+            Kernel.Bind<IWebChecker>().To<SimpleWebChecker>().InSingletonScope().WithPropertyValue("Logger", new ExtendedLogger());
         }
 
         public static object Get(Type objectType)
